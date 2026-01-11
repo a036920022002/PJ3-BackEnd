@@ -1,5 +1,5 @@
 # 使用 .NET 8 SDK 進行編譯
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 # 複製專案檔並進行還原
