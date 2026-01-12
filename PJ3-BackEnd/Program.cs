@@ -49,21 +49,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<IPasswordService, bcrypt>();
 
 var app = builder.Build();
- 
+
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 app.UseCors(myAllowSpecificOrigins);
 app.UseStaticFiles();
-
-// 針對 public 資料夾的對應
 app.UseStaticFiles(new StaticFileOptions
 {
-    // 指定實體檔案路徑：專案根目錄下的 public 資料夾
     FileProvider = new PhysicalFileProvider(
         Path.Combine(builder.Environment.ContentRootPath, "public")),
-
-    // 指定網路請求路徑：當網址出現 /public 時，對應到上面的資料夾
     RequestPath = "/public"
 });
 
