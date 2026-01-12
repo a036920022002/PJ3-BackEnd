@@ -6,7 +6,11 @@ using PJ3_BackEnd.Models;
 using PJ3_BackEnd.Service;
 using System.Text;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    WebRootPath = "public"
+});
 
 builder.Services.AddControllers();
 
@@ -43,7 +47,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 builder.Services.AddScoped<IPasswordService, bcrypt>();
-builder.Services.AddControllers();
 
 var app = builder.Build();
  
