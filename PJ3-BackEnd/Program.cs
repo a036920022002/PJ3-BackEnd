@@ -21,7 +21,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: myAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173") // 輸入前端地址
+            policy.WithOrigins("myprofilebycsharp.zeabur.app") // 輸入前端地址
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
         });
