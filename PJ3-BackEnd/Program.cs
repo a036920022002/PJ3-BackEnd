@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
                     "http://localhost:5175",                 // Vue/Vite 預設開發網址
                     "http://localhost:5173",                 // 有時候 Vite 會跑在 5173
                     "https://myprofilebycsharp.zeabur.app" ,
-                    "https://pj3-backend-pag6.onrender.com"  // 正式環境網址
+                    "https://pj-3-personalprofile-frontend.vercel.app/"  // 正式環境網址
                   )
                   .AllowAnyHeader()
                   .AllowAnyMethod();
