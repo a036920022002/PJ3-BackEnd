@@ -14,19 +14,23 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 
 builder.Services.AddControllers();
 
-//CORS 設定
+// CORS 設定
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: myAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("https://myprofilebycsharp.zeabur.app") // 輸入前端地址
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
+            policy.WithOrigins(
+                    "http://localhost:5175",                 // Vue/Vite 預設開發網址
+                    "http://localhost:5173",                 // 有時候 Vite 會跑在 5173
+                    "https://myprofilebycsharp.zeabur.app" ,
+                    "https://pj3-backend-pag6.onrender.com"  // 正式環境網址
+                  )
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
         });
 });
-
 //資料庫依賴注入部分
 builder.Services.AddDbContext<profileContext>(options =>options.UseMySQL(builder.Configuration.GetConnectionString("WebDatabase")));
 //JWT 設定部分
